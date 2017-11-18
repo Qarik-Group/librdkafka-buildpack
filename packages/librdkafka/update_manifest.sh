@@ -20,11 +20,11 @@ BLOB=$(ls $BLOB)
 cat > $TMP_DIR/dependencies.yml <<YAML
 default_versions:
 - name: ${BLOB_NAME}
-  version: ${BLOB_NAME}
+  version: ${VERSION}
 dependencies:
 - ((merge on version))
 - name:    ${BLOB_NAME}
-  version: ${BLOB_NAME}
+  version: ${VERSION}
   uri:     "${DOWNLOAD_ROOT_URL}/blobs/${BLOB_NAME}/$(basename ${BLOB})"
   md5:     "$(md5sum ${BLOB} | awk '{print $1}')"
   cf_stacks: [cflinuxfs2]
