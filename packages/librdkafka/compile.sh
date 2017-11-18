@@ -31,7 +31,7 @@ cd $TMP_SRC_DIR
 rm -rf librdkafka-*/
 
 unzip $SRC_ZIP
-cd librdkafka-*/
+cd *librdkafka*/
 ./configure --prefix=${TMP_BUILD_DIR}
 make
 make install
