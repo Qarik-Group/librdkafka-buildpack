@@ -6,7 +6,7 @@ If you want to learn how to make a "supply"-only buildpack for multi-buildpack s
 
 * Admins can [download buildpacks](https://github.com/cloudfoundry-community/librdkafka-buildpack/releases)
 * [Concourse CI](https://ci.starkandwayne.com/teams/main/pipelines/librdkafka-buildpack)
-* Discussions and CI notifications at [#bigdata-boshrelease channel](https://cloudfoundry.slack.com/messages/C7NLFBQLS/) on https://slack.cloudfoundry.org
+* Discussions and CI notifications at [#bigdata-boshrelease channel](https://cloudfoundry.slack.com/messages/C6R4VJNS2/) on https://slack.cloudfoundry.org
 
 ## Example
 
