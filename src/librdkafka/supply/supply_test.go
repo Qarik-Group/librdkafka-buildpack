@@ -2,7 +2,7 @@ package supply_test
 
 import (
 	"io/ioutil"
-	"opencv/supply"
+	"librdkafka/supply"
 	"os"
 	"path/filepath"
 
@@ -31,7 +31,7 @@ var _ = Describe("Supply", func() {
 	)
 
 	BeforeEach(func() {
-		depsDir, err = ioutil.TempDir("", "opencv-buildpack.deps.")
+		depsDir, err = ioutil.TempDir("", "librdkafka-buildpack.deps.")
 		Expect(err).To(BeNil())
 
 		depsIdx = "32"
@@ -65,18 +65,18 @@ var _ = Describe("Supply", func() {
 		Expect(err).To(BeNil())
 	})
 
-	Describe("Install OpenCV", func() {
+	Describe("Install librdkafka", func() {
 		BeforeEach(func() {
-			dep := libbuildpack.Dependency{Name: "opencv", Version: "99.99"}
+			dep := libbuildpack.Dependency{Name: "librdkafka", Version: "99.99"}
 
-			mockManifest.EXPECT().DefaultVersion("opencv").Return(dep, nil)
+			mockManifest.EXPECT().DefaultVersion("librdkafka").Return(dep, nil)
 			mockManifest.EXPECT().InstallDependency(dep, depDir)
 		})
 
-		It("Installs opencv to the depDir, creating a symlink in <depDir>/bin", func() {
-			Expect(supplier.InstallOpenCV()).To(Succeed())
-			Expect(buffer.String()).To(ContainSubstring("-----> Installing opencv"))
-			Expect(buffer.String()).To(ContainSubstring("       Using opencv version 99.99"))
+		It("Installs librdkafka to the depDir, creating a symlink in <depDir>/bin", func() {
+			Expect(supplier.Installlibrdkafka()).To(Succeed())
+			Expect(buffer.String()).To(ContainSubstring("-----> Installing librdkafka"))
+			Expect(buffer.String()).To(ContainSubstring("       Using librdkafka version 99.99"))
 		})
 	})
 })

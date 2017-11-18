@@ -20,14 +20,14 @@ var _ = Describe("deploy a python app", func() {
 
 	BeforeEach(func() {
 		app = cutlass.New(filepath.Join(bpDir, "fixtures", "py-sample"))
-		app.Buildpacks = []string{"opencv_buildpack", "python_buildpack"}
+		app.Buildpacks = []string{"librdkafka_buildpack", "python_buildpack"}
 		app.SetEnv("BP_DEBUG", "1")
 	})
 
 	It("succeeds", func() {
 		PushAppAndConfirm(app)
 
-		Expect(app.Stdout.String()).To(ContainSubstring("Installing opencv"))
+		Expect(app.Stdout.String()).To(ContainSubstring("Installing librdkafka"))
 		Expect(app.GetBody("/")).To(ContainSubstring("3.3.0"))
 
 		if cutlass.Cached {

@@ -2,7 +2,7 @@
 set -euo pipefail
 set -x
 
-buildpack=opencv
+buildpack=librdkafka
 
 export ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 cd $ROOT

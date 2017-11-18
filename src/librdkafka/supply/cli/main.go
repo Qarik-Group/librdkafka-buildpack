@@ -2,8 +2,8 @@ package main
 
 import (
 	"os"
-	// _ "opencv/hooks"
-	"opencv/supply"
+	// _ "librdkafka/hooks"
+	"librdkafka/supply"
 	"time"
 
 	"github.com/cloudfoundry/libbuildpack"

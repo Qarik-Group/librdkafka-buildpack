@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-buildpack=opencv
+buildpack=librdkafka
 
 ROOTDIR="$( dirname "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" )"
 BINDIR=$ROOTDIR/bin

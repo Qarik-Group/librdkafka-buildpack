@@ -1,10 +1,10 @@
 ---
 meta:
-  name: opencv
+  name: librdkafka
   target:  sw
   url:     https://ci.starkandwayne.com
 
-  initial_version: 0.2.0
+  initial_version: 0.1.0
 
   git:
     email:  ci@starkandwayne.com
@@ -33,7 +33,7 @@ meta:
 
   slack:
     webhook: (( vault "secret/pipelines/" meta.pipeline "/slack:webhook" ))
-    channel:       '#opencv'
+    channel:       '#librdkafka'
     username:      starkandwayne-ci
     icon:          https://www.starkandwayne.com/assets/images/shield-blue-50x50.png
     blob_success:  '(( concat "$BUILD_PIPELINE_NAME: New version of $BUILD_JOB_NAME was detected, and updated in master. <" meta.url "/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME| Cut a new release?>" ))'
@@ -42,16 +42,16 @@ meta:
 groups:
 - name: blobs
   jobs:
-  - opencv
+  - librdkafka
 
 jobs:
-- name: opencv
+- name: librdkafka
   public: true
   plan:
   - aggregate:
     - { get: git }
-    - { get: opencv, trigger: true, params: { include_source_zip: true, globs: ["skip"] }}
-  - task: build-opencv
+    - { get: librdkafka, trigger: true, params: { include_source_zip: true, globs: ["skip"] }}
+  - task: build-librdkafka
     config:
       image_resource:
         type: docker-image
@@ -61,15 +61,15 @@ jobs:
       platform: linux
       inputs:
       - name: git
-      - name: opencv
+      - name: librdkafka
       outputs:
       - name: blobs
       run:
-        path: ./git/packages/opencv/compile.sh
+        path: ./git/packages/librdkafka/compile.sh
       params:
-        SRC_DIR:      opencv
+        SRC_DIR:      librdkafka
         OUTPUT_DIR:   blobs
-        VERSION_FROM: opencv/version
+        VERSION_FROM: librdkafka/version
         INSTALL_LINUX_PKG: 1
     on_failure:
       put: notify
@@ -88,19 +88,19 @@ jobs:
       platform: linux
       inputs:
       - name: git
-      - name: opencv
+      - name: librdkafka
       - name: blobs
       outputs:
       - name: pushme
       run:
-        path: ./git/packages/opencv/update_manifest.sh
+        path: ./git/packages/librdkafka/update_manifest.sh
       params:
-        NAME:         opencv
-        VERSION_FROM: opencv/version
+        NAME:         librdkafka
+        VERSION_FROM: librdkafka/version
         REPO_ROOT:      git
         REPO_OUT:       pushme
-        BLOB_NAME:      opencv
-        BLOB:           blobs/opencv-compiled-*.tgz
+        BLOB_NAME:      librdkafka
+        BLOB:           blobs/librdkafka-compiled-*.tgz
         DOWNLOAD_ROOT_URL: (( concat "http://" meta.aws.bucket ".s3-website-" meta.aws.region_name ".amazonaws.com" ))
         GIT_EMAIL:      (( grab meta.git.email ))
         GIT_NAME:       (( grab meta.git.name ))
@@ -109,9 +109,9 @@ jobs:
     params:
       rebase: true
       repository: pushme
-  - put: opencv-blob
+  - put: librdkafka-blob
     params:
-      file: blobs/opencv-compiled-*.tgz
+      file: blobs/librdkafka-compiled-*.tgz
       acl: public-read
 
     on_success:
@@ -123,17 +123,17 @@ jobs:
         text:     (( grab meta.slack.blob_success ))
 
 resources:
-  - name: opencv
+  - name: librdkafka
     type: github-release
     source:
-      user:         opencv
-      repository:   opencv
+      user:         edenhill
+      repository:   librdkafka
       access_token: (( grab meta.github.access_token ))
 
-  - name: opencv-blob
+  - name: librdkafka-blob
     type: s3
     source:
-      regexp: blobs/opencv/opencv-compiled-(.*).tgz
+      regexp: blobs/librdkafka/librdkafka-compiled-(.*).tgz
       bucket: (( grab meta.aws.bucket ))
       region: (( grab meta.aws.region_name ))
       access_key_id: (( grab meta.aws.access_key ))

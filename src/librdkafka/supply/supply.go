@@ -19,24 +19,24 @@ type Supplier struct {
 }
 
 func Run(ss *Supplier) error {
-	if err := ss.InstallOpenCV(); err != nil {
-		ss.Log.Error("Unable to install opencv: %s", err.Error())
+	if err := ss.Installlibrdkafka(); err != nil {
+		ss.Log.Error("Unable to install librdkafka: %s", err.Error())
 		return err
 	}
 
 	return nil
 }
 
-func (ss *Supplier) InstallOpenCV() error {
-	ss.Log.BeginStep("Installing opencv")
+func (ss *Supplier) Installlibrdkafka() error {
+	ss.Log.BeginStep("Installing librdkafka")
 
-	opencv, err := ss.Manifest.DefaultVersion("opencv")
+	librdkafka, err := ss.Manifest.DefaultVersion("librdkafka")
 	if err != nil {
 		return err
 	}
-	ss.Log.Info("Using opencv version %s", opencv.Version)
+	ss.Log.Info("Using librdkafka version %s", librdkafka.Version)
 
-	if err := ss.Manifest.InstallDependency(opencv, ss.Stager.DepDir()); err != nil {
+	if err := ss.Manifest.InstallDependency(librdkafka, ss.Stager.DepDir()); err != nil {
 		return err
 	}
 	return nil
