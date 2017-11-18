@@ -1,7 +1,13 @@
 default_versions:
 - name: librdkafka
-  version: librdkafka
-dependencies: []
+  version: 0.11.1
+dependencies:
+- cf_stacks:
+  - cflinuxfs2
+  md5: 0cae456907979c7eec210d5029c0b941
+  name: librdkafka
+  uri: http://librdkafka-buildpack.s3-website-us-east-1.amazonaws.com/blobs/librdkafka/librdkafka-compiled-0.11.1.tgz
+  version: 0.11.1
 include_files:
 - LICENSE
 - README.md
@@ -12,3 +18,4 @@ include_files:
 - manifest.yml
 language: librdkafka
 pre_package: scripts/build.sh
+
