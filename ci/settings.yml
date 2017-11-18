@@ -100,7 +100,7 @@ jobs:
         REPO_ROOT:      git
         REPO_OUT:       pushme
         BLOB_NAME:      librdkafka
-        BLOB:           blobs/librdkafka-compiled-*.tgz
+        BLOB:           blobs/blobs/librdkafka-compiled-*.tgz
         DOWNLOAD_ROOT_URL: (( concat "http://" meta.aws.bucket ".s3-website-" meta.aws.region_name ".amazonaws.com" ))
         GIT_EMAIL:      (( grab meta.git.email ))
         GIT_NAME:       (( grab meta.git.name ))
@@ -111,7 +111,7 @@ jobs:
       repository: pushme
   - put: librdkafka-blob
     params:
-      file: blobs/librdkafka-compiled-*.tgz
+      file: blobs/blobs/librdkafka-compiled-*.tgz
       acl: public-read
 
     on_success:
