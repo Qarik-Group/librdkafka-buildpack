@@ -1,12 +1,12 @@
-# librdkafka buildpack for Cloud Foundry
+# Kafka librdkafka buildpack for Cloud Foundry
 
-Cloud Foundry applications can blend multiple buildpacks together. If your application requires [librdkafka](https://librdkafka.org/), then this buildpack can help you.
+Cloud Foundry applications can blend multiple buildpacks together. If your application uses Kafka and your Kafka libraries require [librdkafka](https://github.com/edenhill/librdkafka), then this buildpack can help you.
 
 If you want to learn how to make a "supply"-only buildpack for multi-buildpack support, then this is an example buildpack for you. Learn more from Keaty Gross at Cloud Foundry Summit EU 2017 in her [keynote](https://www.youtube.com/watch?v=0DnQNTq8FLw&list=PLhuMOCWn4P9hsn9q-GRTa77gxavTOnHaa&index=59) and [session talk](https://www.youtube.com/watch?v=41wEXS03U78).
 
 * Admins can [download buildpacks](https://github.com/cloudfoundry-community/librdkafka-buildpack/releases)
 * [Concourse CI](https://ci.starkandwayne.com/teams/main/pipelines/librdkafka-buildpack)
-* Discussions and CI notifications at [#librdkafka channel](https://cloudfoundry.slack.com/messages/C7NLFBQLS/) on https://slack.cloudfoundry.org
+* Discussions and CI notifications at [#bigdata-boshrelease channel](https://cloudfoundry.slack.com/messages/C7NLFBQLS/) on https://slack.cloudfoundry.org
 
 ## Example
 
@@ -40,9 +40,9 @@ Downloaded app package (826B)
 -----> Running go build supply
 -----> librdkafka Buildpack version 0.1.0
 -----> Installing librdkafka
-       Using librdkafka version 3.3.0
------> Installing librdkafka 3.3.0
-       Download [http://librdkafka-buildpack.s3-website-us-east-1.amazonaws.com/blobs/librdkafka/librdkafka-compiled-3.3.0.tgz]
+       Using librdkafka version 0.11.1
+-----> Installing librdkafka 0.11.1
+       Download [http://librdkafka-buildpack.s3-website-us-east-1.amazonaws.com/blobs/librdkafka/librdkafka-compiled-0.11.1.tgz]
 -----> Python Buildpack version 1.6.1
 -----> Supplying Python
 -----> Installing python 3.6.3
