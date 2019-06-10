@@ -1,3 +1,7 @@
+# librdkafka buildpack for Cloud Foundry
+
+[librdkafka](https://github.com/edenhill/librdkafka) is the Apache Kafka C/C++ library by [Magnus Edenhill](http://www.edenhill.se/). It is required to be installed before using language binding libraries like Python's `librdkafka-python`. This buildpack will install a pre-compiled version of librdkafka that will immediately work with your Cloud Foundry application.
+
 ## Buildpack User Documentation
 
 ### Building the Buildpack
@@ -21,7 +25,7 @@ To build this buildpack, run the following command from the buildpack's director
 1. Build the buildpack
 
     ```bash
-    buildpack-packager build
+    buildpack-packager build -stack cflinuxfs3 -cached
     ```
 
 1. Use in Cloud Foundry
@@ -29,8 +33,8 @@ To build this buildpack, run the following command from the buildpack's director
     Upload the buildpack to your Cloud Foundry and optionally specify it by name
 
     ```bash
-    cf create-buildpack [BUILDPACK_NAME] [BUILDPACK_ZIP_FILE_PATH] 1
-    cf push my_app [-b BUILDPACK_NAME]
+    cf create-buildpack librdkafka_buildpack librdkafka_buildpack*.zip 100
+    cf push my_app -b librdkafka_buildpack -b python_buildpack
     ```
 
 ### Testing
@@ -46,12 +50,6 @@ To test this buildpack, run the following command from the buildpack's directory
     ```
 
     To simplify the process in the future, install [direnv](https://direnv.net/) which will automatically source .envrc when you change directories.
-
-1. Run unit tests
-
-    ```bash
-    ./scripts/unit.sh
-    ```
 
 1. Run integration tests
 
