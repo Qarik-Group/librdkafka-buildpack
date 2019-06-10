@@ -43,7 +43,13 @@ type Supplier struct {
 func (s *Supplier) Run() error {
 	s.Log.BeginStep("Supplying librdkafka")
 
-	// TODO: Install any dependencies here...
+	freetds, err := s.Manifest.DefaultVersion("librdkafka")
+	if err != nil {
+		return err
+	}
+	if err := s.Installer.InstallDependency(freetds, s.Stager.DepDir()); err != nil {
+		return err
+	}
 
 	return nil
 }
