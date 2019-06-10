@@ -1,4 +1,2 @@
-Flask==1.0.2
-jsonpickle
-numpy
-librdkafka-python
+Flask
+confluent-kafka

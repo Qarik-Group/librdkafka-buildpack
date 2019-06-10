@@ -22,6 +22,6 @@ var _ = Describe("Python Integration Test", func() {
 		app = cutlass.New(filepath.Join(bpDir, "fixtures", "py-sample"))
 		app.Buildpacks = []string{"librdkafka_buildpack", "python_buildpack"}
 		PushAppAndConfirm(app)
-		Expect(app.GetBody("/")).To(ContainSubstring("Something on your website"))
+		Expect(app.GetBody("/")).To(ContainSubstring("Hello World!"))
 	})
 })

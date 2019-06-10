@@ -1,6 +1,6 @@
 # librdkafka buildpack for Cloud Foundry
 
-[librdkafka](https://github.com/edenhill/librdkafka) is the Apache Kafka C/C++ library by [Magnus Edenhill](http://www.edenhill.se/). It is required to be installed before using language binding libraries like Python's `librdkafka-python`. This buildpack will install a pre-compiled version of librdkafka that will immediately work with your Cloud Foundry application.
+[librdkafka](https://github.com/edenhill/librdkafka) is the Apache Kafka C/C++ library by [Magnus Edenhill](http://www.edenhill.se/). It is required to be installed before using language binding libraries like Python's `confluent-kafka`. This buildpack will install a pre-compiled version of librdkafka that will immediately work with your Cloud Foundry application.
 
 ## Updates via CI
 
