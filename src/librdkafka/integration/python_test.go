@@ -13,7 +13,7 @@ var _ = Describe("Python Integration Test", func() {
 	var app *cutlass.App
 	AfterEach(func() {
 		if app != nil {
-			// app.Destroy()
+			app.Destroy()
 		}
 		app = nil
 	})
