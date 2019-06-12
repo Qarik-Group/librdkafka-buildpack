@@ -17,6 +17,6 @@ dependencies:
 - name: librdkafka
   version: 1.0.1
   uri: https://librdkafka-buildpack.s3.us-east-1.amazonaws.com/blobs/librdkafka/librdkafka-compiled-1.0.1.tgz
-  sha256: a1c94960c604d4c43c165da7d075a7ff17413c6d4ce348389dabee963d0c6ea6
+  sha256: ecc3c1592c74e1a2e8f7f8a6fb728153f1ee6d877328005e526415374f2b0546
   cf_stacks:
   - cflinuxfs3
