@@ -1,25 +1,18 @@
 ---
 meta:
   name:    librdkafka
-  target:  ohio-cf
-  url:     https://ci2.starkandwayne.com
+  target:  pipes@cfcommunity
+  url:     https://pipes.starkandwayne.com
 
   git:
     email:  ((git-commit-email))
-    name:   ((git-commit-name))
-
-  cf:
-    api_url:         ((cf-api-url))
-    admin_username:  ((cf-admin-username))
-    admin_password:  ((cf-admin-password))
-    organization:    ((cf-organization))
-    space:           ((cf-space))
+    name:   'Stark & Wayne CI Bot'
 
   aws:
     bucket:      (( grab meta.pipeline ))
     region_name: us-east-1
-    access_key:  ((aws-access-key))
-    secret_key:  ((aws-secret-key))
+    access_key:  ((aws-cfcommunity.access))
+    secret_key:  ((aws-cfcommunity.secret))
 
   github:
     owner:  starkandwayne
@@ -29,9 +22,9 @@ meta:
     access_token: ((github-access-token))
 
   slack:
-    webhook:       ((slack-webhook))
-    username:      ((slack-username))
-    icon:          ((slack-icon-url))
+    webhook:       ((slack.webhook))
+    username:      ((slack.username))
+    icon:          ((slack.icon))
     channel:       "#starkandwayne-buildpacks"
 
 resources:
@@ -50,4 +43,3 @@ resources:
       access_key_id: (( grab meta.aws.access_key ))
       secret_access_key: (( grab meta.aws.secret_key ))
       regexp: blobs/librdkafka/librdkafka-compiled-(.*).tgz
-
