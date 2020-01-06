@@ -27,7 +27,7 @@ meta:
       tag: 1.12
     cflinux:
       name: cloudfoundry/cflinuxfs3
-      tag: latest
+      tag: 0.150.0
 
   aws:
     bucket:     (( grab meta.pipeline ))
