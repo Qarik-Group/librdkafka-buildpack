@@ -2,7 +2,7 @@
 language: librdkafka
 default_versions:
 - name: librdkafka
-  version: 1.8.2
+  version: 1.9.0
 dependency_deprecation_dates: []
 
 include_files:
@@ -15,8 +15,8 @@ pre_package: scripts/build.sh
 
 dependencies:
 - name: librdkafka
-  version: 1.8.2
-  uri: https://librdkafka-buildpack.s3.us-east-1.amazonaws.com/blobs/librdkafka/librdkafka-compiled-1.8.2.tgz
-  sha256: 5b75c0468f7866fb4a1da40999f93a0667f32e00a69b4c648aba948ccb1b31f0
+  version: 1.9.0
+  uri: https://librdkafka-buildpack.s3.us-east-1.amazonaws.com/blobs/librdkafka/librdkafka-compiled-1.9.0.tgz
+  sha256: 5be7fc81a5d71f07e795fe4fdbe87258a32ae30de4d4dbd0471867c9cdb6a26c
   cf_stacks:
   - cflinuxfs3
